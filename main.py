@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 # Load environment variables using the .env file
 load_dotenv()
-CANVAS_BASE_URL = os.getenv("CANVAS_BASE_URL")
+CANVAS_BASE_URL = os.getenv("CANVAS_BASE_URL", "https://canvas.instructure.com")
 ACCESS_TOKEN = os.getenv("CANVAS_ACCESS_TOKEN")
 COURSE_IDS_STR = os.getenv("CANVAS_COURSE_IDS", "")
 COURSE_IDS = [cid.strip() for cid in COURSE_IDS_STR.split(",") if cid.strip()]
@@ -120,13 +120,13 @@ def refresh_data():
 # --- GUI Setup ---
 root = tk.Tk()
 root.title("Canvas Updates")
-root.geometry("700x500")
+root.geometry("750x300")
 root.resizable(True, True)
 
 style = ttk.Style(root)
 style.theme_use("clam")
-style.configure("Treeview.Heading", font=("Helvetica", 12, "bold"), foreground="#333", background="#ececec")
-style.configure("Treeview", font=("Helvetica", 10), rowheight=25)
+style.configure("Treeview.Heading", font=("Helvetica", 10, "bold"), foreground="#333", background="#ececec")
+style.configure("Treeview", font=("Helvetica", 9), rowheight=20)
 
 menubar = tk.Menu(root)
 root.config(menu=menubar)
